@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Iniciar Sesión</h2>
+
+<form method="POST" action="{{ url_for('login') }}" novalidate>
+    {{ form.hidden_tag() }}
+
+    <div>
+        {{ form.username.label }}<br>
+        {{ form.username() }}
+        {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </div>
+
+    <div>
+        {{ form.password.label }}<br>
+        {{ form.password() }}
+        {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </div>
+
+    <br>
+    {{ form.submit() }}
+</form>
+{% endblock %}
